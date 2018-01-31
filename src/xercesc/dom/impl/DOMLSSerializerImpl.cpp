@@ -1743,7 +1743,23 @@ void DOMLSSerializerImpl::ensureValidString(const DOMNode* nodeToWrite, const XM
     while(*cursor!=0)
     {
         if((fIsXml11 && !XMLChar1_1::isXMLChar(*cursor)) || (!fIsXml11 && !XMLChar1_0::isXMLChar(*cursor)))
-            reportError(nodeToWrite, DOMError::DOM_SEVERITY_FATAL_ERROR, XMLDOMMsg::INVALID_CHARACTER_ERR);
+        {
+            if ((*cursor >= 0xD800) && (*cursor <= 0xDBFF))
+            {
+                if((fIsXml11 && !XMLChar1_1::isXMLChar(*cursor, *(cursor+1))) || (!fIsXml11 && !XMLChar1_0::isXMLChar(*cursor, *(cursor+1))))
+                {
+                    reportError(nodeToWrite, DOMError::DOM_SEVERITY_FATAL_ERROR, XMLDOMMsg::INVALID_CHARACTER_ERR);
+                }
+                else
+                {
+                    cursor++;
+                }
+            }
+            else 
+            {
+                reportError(nodeToWrite, DOMError::DOM_SEVERITY_FATAL_ERROR, XMLDOMMsg::INVALID_CHARACTER_ERR);
+            }
+        }
         cursor++;
     }
 }

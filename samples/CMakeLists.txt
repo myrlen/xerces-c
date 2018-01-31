@@ -37,6 +37,7 @@ set(EXTRA_DIST
   data/personal-schema.xml
   data/redirect.dtd
   data/long.xml
+  data/emoticons.xml
   )
 
 macro(add_sample_executable name)
@@ -187,6 +188,7 @@ add_xerces_sample_test(DOMPrint2         COMMAND DOMPrint -wfpp=on -wddc=off    
 add_xerces_sample_test(DOMPrint3         COMMAND DOMPrint -wfpp=on -wddc=on           personal.xml)
 add_xerces_sample_test(DOMPrint4         COMMAND DOMPrint -wfpp=on -wddc=off -n -s    personal-schema.xml)
 add_xerces_sample_test(DOMPrint5         COMMAND DOMPrint -v=never -xpath=//name      personal.xml)
+add_xerces_sample_test(DOMPrint6         COMMAND DOMPrint -wfpp=on -wddc=off -v=never emoticons.xml)
 add_xerces_sample_test(StdInParse1       COMMAND StdInParse STDIN personal.xml)
 add_xerces_sample_test(StdInParse2       COMMAND StdInParse -v=never STDIN personal.xml)
 add_xerces_sample_test(StdInParse3       COMMAND StdInParse STDIN personal-schema.xml)

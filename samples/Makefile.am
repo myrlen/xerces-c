@@ -33,6 +33,7 @@ EXTRA_DIST =                        CMakeLists.txt \
                                     data/personal-schema.xml \
                                     data/redirect.dtd \
                                     data/long.xml \
+                                    data/emoticons.xml \
                                     expected \
                                     scripts
 
@@ -159,6 +160,7 @@ TESTS =					scripts/SAXCount \
 					scripts/DOMPrint3 \
 					scripts/DOMPrint4 \
 					scripts/DOMPrint5 \
+					scripts/DOMPrint6 \
 					scripts/StdInParse1 \
 					scripts/StdInParse2 \
 					scripts/StdInParse3 \
